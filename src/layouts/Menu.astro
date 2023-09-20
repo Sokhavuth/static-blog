@@ -1,0 +1,95 @@
+<!--src/layouts/Menu.astro-->
+---
+const {pageURL} = Astro.props
+let home = ''
+if(pageURL === '/'){
+    home = 'active'
+} 
+---
+<section class='menu'>
+    <nav class="nav">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="region">
+            <div class="topnav" id="myTopnav">
+                <a href="/" class=`home ${home}`>ទំព័រ​ដើម</a>
+                <a href="/category/Khmer" class=`Khmer`>រឿង​ខ្មែរ</a>
+                <a href="/category/Thai" class=`Thai`>រឿង​ថៃ</a>
+                <a href="/category/Chinese" class=`Chinese`>រឿង​ចិន</a>
+                <a href="/category/Korean" class=`Korean`>រឿង​កូរ៉េ</a>
+                <a href="#contect" class="contact">ទំនាក់ទំនង</a>
+                <a href="#about" class="about">អំពីយើង​ខ្ញុំ</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <script is:inline>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>        
+</section>
+
+<style>
+nav{
+    background-color: rgb(189, 59, 11);
+}
+
+.topnav {
+    background-color: rgb(189, 59, 11);
+    overflow: hidden;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 9px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    
+  }
+  
+  .topnav a:hover {
+    background-color: var(--background-dark);
+    color: white;
+  }
+  
+  .topnav a.active {
+    background-color: var(--background-dark);
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+}
+  
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+</style>
