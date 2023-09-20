@@ -1,0 +1,139 @@
+<!--src/pages/index.astro-->
+---
+const {pageTitle="គំរូទំព័រ"} = Astro.props
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+		<link href="/images/siteLogo.png" rel="icon" />
+        <link href="/fonts/setup.css" rel="stylesheet">
+        <link href="/styles/base.css" rel="stylesheet">
+		<script is:inline src="/scripts/jquery.js"></script>
+    </head>
+    <body>
+        <section class="header">
+            <header class='wrapper region'>
+                <div class='logo'>
+                    <a href='/'><img src='/images/siteLogo.png' /></a>
+                    <a href='/'>ខ្មែរ​វីដេអូ</a>
+                </div>
+                <form class='search'>
+                    <select>
+                        <option>រឿង​ខ្មែរ</option>
+                        <option>រឿង​ថៃ</option>
+                        <option>រឿង​ចិន</option>
+                        <option>រឿង​កូរ៉េ</option>
+                    </select>
+                    <input type='text' name='q' placeholder='សរសេរ​ពាក្យ​ត្រូវ​ស្វែងរក...' required />
+                    <input type='submit' value='ស្វែងរក' /> 
+                </form>
+                <div class='date'>
+                    <script>
+                        const datetime = new Date().toLocaleDateString('it-IT')
+                        $('.date').html(datetime)
+                    </script>
+                </div>
+            </header>
+        </section>
+        <section class='menu'>
+            <nav class="nav">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <link rel="stylesheet" href="/styles/menu.css" />
+                <div class="region">
+                    <div class="topnav" id="myTopnav">
+                        <a href="/" class="home">ទំព័រ​ដើម</a>
+                        <a href="/category/Khmer" class="home">រឿង​ខ្មែរ</a>
+                        <a href="/category/Thai" class="movie">រឿង​ថៃ</a>
+                        <a href="/category/Chinese" class="movie">រឿង​ចិន</a>
+                        <a href="/category/Korean" class="movie">រឿង​កូរ៉េ</a>
+                        <a href="#contect" class="contact">ទំនាក់ទំនង</a>
+                        <a href="#about" class="about">អំពីយើង​ខ្ញុំ</a>
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <script is:inline>
+                function myFunction() {
+                    var x = document.getElementById("myTopnav");
+                    if (x.className === "topnav") {
+                        x.className += " responsive";
+                    } else {
+                        x.className = "topnav";
+                    }
+                }
+            </script>        
+        </section>
+
+        <slot/>
+
+        <style>
+            .header{
+                background: orangered;
+            }
+
+            .wrapper{
+                display: grid;
+                grid-template-columns: 25% auto 20%;
+                align-items: center;
+                padding: 10px 0;
+            }
+
+            .wrapper .logo{
+                display: grid;
+                grid-template-columns: 60px auto;
+                align-items: center;
+                grid-gap: 10px;
+            }
+
+            .wrapper .logo img{
+                width: 60px;
+            }
+
+            .wrapper .logo a{
+                font: 40px/1.5 StardosStencul, Limonf3;
+                color: white;
+            }
+
+            .wrapper .search{
+                display: grid;
+                grid-template-columns: 15% auto 15%;
+            }
+
+            .wrapper .search input, .wrapper .search select{
+                font: var(--body-font);
+            }
+
+            .wrapper .search [name='q']{
+                padding: 0 5px;
+            }
+
+            .wrapper .date{
+                text-align: right;
+                color: white;
+                font-size: 20px;
+            }
+
+            @media only screen and (max-width: 600px){
+                .wrapper{
+                    grid-template-columns: 100%;
+                    padding: 0 10px;
+                    text-align: center;
+                }
+
+                .wrapper .logo{
+                    grid-template-columns: 100%;
+                }
+
+                .wrapper .date{
+                    text-align: center;
+                }
+            }
+        </style>
+    </body>
+</html>
