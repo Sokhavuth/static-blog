@@ -1,0 +1,43 @@
+<!--src/components/Latest.astro-->
+---
+import { getCollection, getEntry } from 'astro:content'
+const Posts = await getCollection('posts')
+Posts.sort((a,b)=>b.data.pudate-a.data.pudate)
+const posts = Posts.slice(0, 5)
+---
+<section class="Latest region">
+    <div class="panel">
+        {posts.map((post)=>(
+            <a href=`/post/${post.slug}`><img src={post.data.thumb} /></a>
+        ))}
+    </div>
+</section>
+
+<style>
+.Latest .panel{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px 0;
+}
+.Latest .panel img{
+    width: 100%;
+    float: left;
+}
+.Latest .panel a:nth-child(1){
+    grid-column: 1 / span 3;
+    
+}
+.Latest .panel a:nth-child(2){
+    grid-column: 4 / span 3;
+}
+.Latest .panel a:nth-child(3){
+    grid-column: 1 / span 2;
+}
+.Latest .panel a:nth-child(4){
+    grid-column: 3 / span 2;
+}
+.Latest .panel a:nth-child(5){
+    grid-column: 5 / span 2;
+}
+</style>

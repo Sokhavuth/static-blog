@@ -1,0 +1,7 @@
+{
+    "_comment": "src/content/videos/video-5.json",
+
+    "videos": [
+        {"vidType": "YouTube", "id": "7DFwSAt14aU", "status": "end"}
+    ]
+}
