@@ -1,0 +1,64 @@
+<!--src/components/Home.astro-->
+---
+import { getCollection, getEntry } from 'astro:content'
+const Posts = await getCollection('posts')
+Posts.sort((a, b)=>b.data.pudate-a.data.pudate)
+const posts = Posts.slice(5, 25)
+---
+<section class="Home region">
+    <div class="container">
+        {posts.map((post)=>(
+            <div class="wrapper">
+                <a href=`/post/${post.slug}`>
+                    <img src={post.data.thumb} />
+                    <img class="play-icon" src="/images/play.png" />
+                </a>
+                <div class="date">{post.data.pudate}</div>
+                <a class="title" href=`/post/${post.slug}`>
+                    <div >{post.data.title}</div>
+                </a>
+                
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+.Home .container{
+    display: grid;
+    grid-template-columns: repeat(4, calc(100% / 4 - 11.25px));
+    grid-gap: 30px 15px;
+    padding: 30px 0;
+}
+.Home .container .wrapper a{
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+}
+.Home .container .wrapper a img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+}
+.Home .container .wrapper a .play-icon{
+    width: auto;
+    min-height: auto;
+    width: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.Home .container .wrapper .title{
+    padding-top: 0;
+}
+.Home .container .wrapper .title div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
