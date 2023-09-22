@@ -15,7 +15,7 @@ const posts = Posts.slice(5, 25)
                 </a>
                 <div class="date">{post.data.pudate}</div>
                 <a class="title" href=`/post/${post.slug}`>
-                    <div>{post.data.title}</div>
+                    <div >{post.data.title}</div>
                 </a>
                 
             </div>
@@ -59,5 +59,11 @@ const posts = Posts.slice(5, 25)
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+@media only screen and (max-width:600px){
+    .Home .container{
+        grid-template-columns: 100%;
+        padding: 30px 10px;
+    }
 }
 </style>
