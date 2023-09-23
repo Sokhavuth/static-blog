@@ -1,5 +1,5 @@
 ---
-name: Tin Sokhavuth
+name: ទិន សុខាវុធ
 role: Admin
 pudate: 2023-09-21
 email: vuthdevelop@gmail.com

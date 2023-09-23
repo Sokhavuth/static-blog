@@ -4,6 +4,7 @@
     --background: #ff7474;
     --background-dark: #541616;
     --background-light: #fce5e5;
+    --body: #fce5e5;
     --body-font: 14px/1.5 Vidaloka, OdorMeanChey;
     --link: #c64242;
     --color: rgb(107, 107, 107);
@@ -29,7 +30,7 @@ a:hover{
     margin: 0 auto;
 }
   
-html{
+body{
     color: var(--color);
     font: var(--body-font);
     background: var(--background-light);
