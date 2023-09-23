@@ -1,13 +1,10 @@
-<!--src/components/Home.astro-->
+<!--src/components/Pagination.astro-->
 ---
-import { getCollection, getEntry } from 'astro:content'
-const Posts = await getCollection('posts')
-Posts.sort((a, b)=>b.data.pudate-a.data.pudate)
-const posts = Posts.slice(5, 25)
+const { page } = Astro.props
 ---
 <section class="Home region">
     <div class="container">
-        {posts.map((post)=>(
+        {page.data.map((post)=>(
             <div class="wrapper">
                 <a href=`/post/${post.slug}`>
                     <img src={post.data.thumb} />
@@ -20,10 +17,25 @@ const posts = Posts.slice(5, 25)
             </div>
         ))}
     </div>
-    <a class="navigation" href="/2">
-        <img src="/images/load-more.png" />
-    </a>
+    <div class="pagination">
+        <span>ទំព័រ </span>
+        <select data-page={page.currentPage}>
+            {[...Array(page.lastPage).keys()].map((pageNumber)=>(
+                    <option>{pageNumber+1}</option>
+                ))
+            }
+        </select>
+        <span> នៃ {page.lastPage}</span>
+    </div>
 </section>
+
+<script>
+    const currentPage = $('.pagination select').attr('data-page')
+    $('.pagination select').val(currentPage)
+    $( ".pagination select" ).on( "change", function(event) {
+        document.location = `/${event.target.value}`
+    })
+</script>
 
 <style>
 .Home .container{
@@ -62,7 +74,7 @@ const posts = Posts.slice(5, 25)
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.Home .navigation{
+.Home .pagination{
     display: block;
     text-align: center;
 }

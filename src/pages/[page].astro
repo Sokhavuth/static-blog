@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro"
+import Pagination from "../components/Pagination.astro"
+import { getCollection } from 'astro:content'
+export async function getStaticPaths({paginate}){
+    const Posts = await getCollection('posts')
+    Posts.sort((a, b)=>b.data.pudate-a.data.pudate)
+    const posts = Posts.slice()
+    return paginate(posts, {pageSize: 24})
+}
+const { page } = Astro.props
+---
+<Base pageTitle="ទំព័រ​ដើម" pageURL="/pagination" >
+    <Pagination page={page}/>
+</Base>
