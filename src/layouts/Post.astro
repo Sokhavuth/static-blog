@@ -47,7 +47,8 @@ const videos = await getEntry(post.data.videos)
             }
             setScreen(videos[0],0,false)
         </script>
-        <div class="fb-comments" data-href="https://khmerweb-static-blog.netlify.app/" data-width="100%" data-numposts="5"></div>
+        <div class="content"><Content/></div>
+        <div class="fb-comments" data-href=`https://khmerweb-static-blog.netlify.app/post/${post.slug}` data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
         ផ្សាយ​ពាណិជ្ជកម្ម
