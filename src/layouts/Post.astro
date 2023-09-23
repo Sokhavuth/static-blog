@@ -21,7 +21,10 @@ const videos = await getEntry(post.data.videos)
             <span>​​​​​​​​​ជំពូកៈ {post.data.categories.join(', ')}</span>
             <span>{post.data.pudate.toLocaleDateString('it-IT')}</span>
         </div>
-        <div class="author">អ្នក​​​​​​​​​​រៀបរៀងៈ {author.data.name}</div>
+        <div class="author">
+            <span>អ្នក​​​​​​​​​​រៀបរៀងៈ {author.data.name}</span>
+            <span></span>
+        </div>
         <div class="video" data-videos={JSON.stringify(videos?.data.videos)}>
             <div class="screen"></div>
             <div class="playlist" data-title={post.data.title}></div>
@@ -48,6 +51,7 @@ const videos = await getEntry(post.data.videos)
             setScreen(videos[0],0,false)
         </script>
         <div class="content"><Content/></div>
+        <div class="fb-share-button" data-href=`https://khmerweb-static-blog.netlify.app/post/${post.slug}` data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkhmerweb-static-blog.netlify.app%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
         <div class="fb-comments" data-href=`https://khmerweb-static-blog.netlify.app/post/${post.slug}` data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
