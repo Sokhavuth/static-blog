@@ -25,18 +25,13 @@ function setScreen(video,id,click){
 
     if(click){
         $('.Post .video .playlist #part'+clicked)
-            .css({'background':'var(--body)', 'color': 'black'})
+            .css({'background':'var(--playlist-part)', 'color': 'var(--playlist-color)'})
     }
     
     $('.Post .video .playlist #part'+id)
-        .css({'background':'var(--link)', 'color': 'white'})
+        .css({'background':'var(--playlist-clicked-bg)', 'color': 'var(--playlist-clicked)'})
 
-    $('.screen').html(iframe)
-    
-    if((video['vidType'] === "Facebook")&&(fb_api)){
-        FB.XFBML.parse()
-    }  
+    $('.screen').html(iframe) 
 
     clicked = id
 }
-

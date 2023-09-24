@@ -7,6 +7,10 @@
     --body: #fce5e5;
     --body-font: 14px/1.5 Vidaloka, OdorMeanChey;
     --link: #c64242;
+    --playlist-part:rgb(182, 179, 179);
+    --playlist-color: black;
+    --playlist-clicked: white;
+    --playlist-clicked-bg: rgb(189,59,11);
     --color: rgb(107, 107, 107);
 }
   
