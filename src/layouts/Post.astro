@@ -42,7 +42,7 @@ const videos = await getEntry(post.data.videos)
                     ending = videos[index].status
                 }
                 
-                let result = `<div id="part${index}" class="part" onClick="setScreen(videos[${index}], ${index},true)">${title} part ${(++index)} ${ending}</div>`
+                let result = `<div id="part${index}" class="part" onClick="setScreen(videos[${index}], ${index},true)">${title} ភាគ ${(++index)} ${ending}</div>`
                 
                 $('.playlist').append(result)
             }
@@ -96,7 +96,6 @@ const videos = await getEntry(post.data.videos)
     position: relative;
     padding-top: 56.25%;
     border: 1px solid white;
-    border-bottom: none;
 }
 .Post .main .video .screen div iframe{
     position: absolute;
