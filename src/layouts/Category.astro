@@ -1,8 +1,88 @@
-<!--src/layouts/Category.astro-->
+<!--src/components/Pagination.astro-->
 ---
-const {posts} = Astro.props
+const { page, category } = Astro.props
 ---
-
 <section class="Category region">
-{posts[0].data.title}
+    <div class="container">
+        {page.data.map((post)=>(
+            <div class="wrapper">
+                <a href=`/post/${post.slug}`>
+                    <img src={post.data.thumb} />
+                    <img class="play-icon" src="/images/play.png" />
+                </a>
+                <div class="date">{post.data.pudate}</div>
+                <a class="title" href=`/post/${post.slug}`>
+                    <div >{post.data.title}</div>
+                </a>
+            </div>
+        ))}
+    </div>
+    <div class="pagination" data-category={category}>
+        <span>ទំព័រ </span>
+        <select data-page={page.currentPage}>
+            {[...Array(page.lastPage).keys()].map((pageNumber)=>(
+                    <option>{pageNumber+1}</option>
+                ))
+            }
+        </select>
+        <span> នៃ {page.lastPage}</span>
+    </div>
 </section>
+
+<script>
+    const currentPage = $('.pagination select').attr('data-page')
+    const category = $('.pagination').attr('data-category')
+    $('.pagination select').val(currentPage)
+    $( ".pagination select" ).on( "change", function(event) {
+        document.location = `/${category}/${event.target.value}`
+    })
+</script>
+
+<style>
+.Category .container{
+    display: grid;
+    grid-template-columns: repeat(4, calc(100% / 4 - 11.25px));
+    grid-gap: 30px 15px;
+    padding: 30px 0;
+}
+.Category .container .wrapper a{
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+}
+.Category .container .wrapper a img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+}
+.Category .container .wrapper a .play-icon{
+    width: auto;
+    min-height: auto;
+    width: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.Category .container .wrapper .title{
+    padding-top: 0;
+}
+.Category .container .wrapper .title div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Category .pagination{
+    display: block;
+    text-align: center;
+}
+@media only screen and (max-width:600px){
+    .Category .container{
+        grid-template-columns: 100%;
+        padding: 30px 10px;
+    }
+}
+</style>

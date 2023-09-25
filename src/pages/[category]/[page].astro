@@ -13,16 +13,14 @@ export async function getStaticPaths({ paginate }) {
         const filteredPosts = posts.filter((post) => post.data.categories.includes(category))
         return paginate(filteredPosts, {
             params: {category},
-            props: {filteredPosts},
             pageSize: 24
         })
     })
   }
   const {page} = Astro.props
   const {category} = Astro.params
-  const {filteredPosts} = Astro.props
 ---
 
 <Base pageTitle="ទំព័រជំពូក" pageURL={category} >
-    <Category page={page} posts={filteredPosts}/>
+    <Category page={page} category={category}/>
 </Base>
