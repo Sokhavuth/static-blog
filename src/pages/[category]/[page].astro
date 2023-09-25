@@ -1,0 +1,28 @@
+<!--src/pages/[category]/[page].astro-->
+---
+import Base from '../../layouts/Base.astro'
+import Category from '../../layouts/Category.astro'
+
+import { getCollection } from 'astro:content'
+export async function getStaticPaths({ paginate }) {
+    const posts = await getCollection('posts')
+    posts.sort((a, b)=>b.data.pudate - a.data.pudate)
+    const categories = [...new Set(posts.map((post) => post.data.categories).flat())]
+    
+    return categories.flatMap((category) => {
+        const filteredPosts = posts.filter((post) => post.data.categories.includes(category))
+        return paginate(filteredPosts, {
+            params: {category},
+            props: {filteredPosts},
+            pageSize: 24
+        })
+    })
+  }
+  const {page} = Astro.props
+  const {category} = Astro.params
+  const {filteredPosts} = Astro.props
+---
+
+<Base pageTitle="ទំព័រជំពូក" pageURL={category} >
+    <Category page={page} posts={filteredPosts}/>
+</Base>

@@ -1,10 +1,27 @@
 <!--src/layouts/Menu.astro-->
 ---
 const {pageURL} = Astro.props
+
 let home = ''
+let Khmer = ''
+let Thai = ''
+let Chinese = ''
+let Korean = ''
+let Documentary = ''
+
 if(pageURL === '/'){
     home = 'active'
-} 
+}else if(pageURL === 'Khmer'){
+    Khmer = 'active'
+}else if(pageURL === 'Thai'){
+    Thai = 'active'
+}else if(pageURL === 'Chinese'){
+    Chinese = 'active'
+}else if(pageURL === 'Korean'){
+    Korean = 'active'
+}else{
+  Documentary = 'active'
+}
 ---
 <section class='menu'>
     <nav class="nav">
@@ -12,11 +29,11 @@ if(pageURL === '/'){
         <div class="region">
             <div class="topnav" id="myTopnav">
                 <a href="/" class=`home ${home}`>ទំព័រ​ដើម</a>
-                <a href="/category/Khmer" class=`Khmer`>រឿង​ខ្មែរ</a>
-                <a href="/category/Thai" class=`Thai`>រឿង​ថៃ</a>
-                <a href="/category/Chinese" class=`Chinese`>រឿង​ចិន</a>
-                <a href="/category/Korean" class=`Korean`>រឿង​កូរ៉េ</a>
-                <a href="/category/Documentary" class=`Korean`>​ឯកសារ</a>
+                <a href="/Khmer/1" class=`Khmer ${Khmer}`>រឿង​ខ្មែរ</a>
+                <a href="/Thai/1" class=`Thai ${Thai}`>រឿង​ថៃ</a>
+                <a href="/Chinese/1" class=`Chinese ${Chinese}`>រឿង​ចិន</a>
+                <a href="/Korean/1" class=`Korean ${Korean}`>រឿង​កូរ៉េ</a>
+                <a href="/Documentary/1" class=`Documentaty ${Documentary}`>​ឯកសារ</a>
                 <a href="#contect" class="contact">ទំនាក់ទំនង</a>
                 <a href="#about" class="about">អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
