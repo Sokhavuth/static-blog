@@ -1,0 +1,62 @@
+<!--src/layouts/Page.astro-->
+---
+const { page } = Astro.props
+const { Content } = await page.render()
+---
+
+<section class="Ad region">
+    <img src="/images/ad.jpg" />
+    <img src="/images/ad.jpg" />
+</section>
+
+<section class="Page region">
+    <div class="main">
+        <h3 class="title">{page.data.title}</h3>
+        
+        <div class="content"><Content/></div>
+    </div>
+    <div class="sidebar">
+        ផ្សាយ​ពាណិជ្ជកម្ម
+    </div>
+
+</section>
+
+<style is:global>
+.Ad{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 10px;
+    padding-top: 10px;
+}
+.Ad img{
+    width: 100%;
+}
+.Page{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-gap: 15px;
+}
+.Page .main, .Page .sidebar{
+    background-color: rgb(231, 223, 223);
+    color: rgb(22, 22, 22);
+    padding: 15px;
+}
+.Page .sidebar{
+    text-align: center;
+    padding: 0;
+}
+.Page .main .title{
+    font: 18px/1.5 Oswald, Koulen;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width:600px){
+    .Ad{
+        grid-template-columns: 100%;
+    }
+    .Page{
+        grid-template-columns: 100%;
+    }
+}
+</style>

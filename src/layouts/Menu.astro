@@ -8,6 +8,8 @@ let Thai = ''
 let Chinese = ''
 let Korean = ''
 let Documentary = ''
+let contact = ''
+let about = ''
 
 if(pageURL === '/'){
     home = 'active'
@@ -20,7 +22,11 @@ if(pageURL === '/'){
 }else if(pageURL === 'Korean'){
     Korean = 'active'
 }else if(pageURL === 'Documentary'){
-  Documentary = 'active'
+    Documentary = 'active'
+}else if(pageURL === 'contact'){
+    contact = 'active'
+}else if(pageURL === 'about'){
+    about = 'active'
 }
 ---
 <section class='menu'>
@@ -34,8 +40,8 @@ if(pageURL === '/'){
                 <a href="/Chinese/1" class=`Chinese ${Chinese}`>រឿង​ចិន</a>
                 <a href="/Korean/1" class=`Korean ${Korean}`>រឿង​កូរ៉េ</a>
                 <a href="/Documentary/1" class=`Documentaty ${Documentary}`>​ឯកសារ</a>
-                <a href="#contect" class="contact">ទំនាក់ទំនង</a>
-                <a href="#about" class="about">អំពីយើង​ខ្ញុំ</a>
+                <a href="/page/contact" class=`contact ${contact}`>ទំនាក់ទំនង</a>
+                <a href="/page/about" class=`about ${about}`>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>

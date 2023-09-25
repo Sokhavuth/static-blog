@@ -1,0 +1,19 @@
+<!--src/pages/page/[page].astro-->
+---
+import Base from "../../layouts/Base.astro"
+import Page from "../../layouts/Page.astro"
+
+import { getCollection } from 'astro:content'
+export async function getStaticPaths(){
+    const pages = await getCollection('pages')
+    return pages.map(page => ({
+        params: { slug: page.slug }, props: { page },
+    }));
+}
+const { page } = Astro.props
+const { slug } = Astro.params
+---
+
+<Base pageTitle="​​​​​​​​​​​​​​​​​​ទំព័រ​ស្តាទិក" pageURL={slug}>
+    <Page page={page}/>
+</Base>
