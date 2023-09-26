@@ -7,12 +7,12 @@
             <a href='/'><img src='/images/siteLogo.png' /></a>
             <a href='/'>ខ្មែរ​វីដេអូ</a>
         </div>
-        <form class='search'>
-            <select>
-                <option>រឿង​ខ្មែរ</option>
-                <option>រឿង​ថៃ</option>
-                <option>រឿង​ចិន</option>
-                <option>រឿង​កូរ៉េ</option>
+        <form class='search' action="/search" method="get">
+            <select name='category'>
+                <option>រឿងខ្មែរ</option>
+                <option>រឿងថៃ</option>
+                <option>រឿងចិន</option>
+                <option>រឿងកូរ៉េ</option>
                 <option>ឯកសារ</option>
             </select>
             <input type='text' name='q' placeholder='សរសេរ​ពាក្យ​ត្រូវ​ស្វែងរក...' required />

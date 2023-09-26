@@ -12,7 +12,6 @@ const { Content } = await page.render()
 <section class="Page region">
     <div class="main">
         <h3 class="title">{page.data.title}</h3>
-        
         <div class="content"><Content/></div>
     </div>
     <div class="sidebar">
@@ -21,7 +20,7 @@ const { Content } = await page.render()
 
 </section>
 
-<style is:global>
+<style>
 .Ad{
     display: grid;
     grid-template-columns: repeat(2, auto);

@@ -1,0 +1,13 @@
+<!--src/pages/search.astro-->
+---
+import Base from "../layouts/Base.astro"
+import Search from "../components/Search.svelte"
+
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('posts')
+---
+
+<Base pageTitle="ទំព័រ​ស្វែង​រក" pageURL="Search">
+    <Search client:load searchList={posts} />
+</Base>
