@@ -5,6 +5,15 @@ const { post } = Astro.props
 const { Content } = await post.render()
 const author = await getEntry(post.data.author)
 const videos = await getEntry(post.data.videos)
+const Categories = {
+    Khmer: 'រឿងខ្មែរ',
+    Thai: 'រឿងថៃ',
+    Chinese: 'រឿងចិន',
+    Korean: 'រឿងកូរ៉េ',
+    Documentary: 'ឯកសារ',
+    News: 'ព័ត៌មាន'
+}
+const categories = post.data.categories.map((category)=>Categories[category])
 ---
 <section class="Ad region">
     <img src="/images/ad.jpg" />
@@ -18,13 +27,13 @@ const videos = await getEntry(post.data.videos)
     <div class="main">
         <h3 class="title">{post.data.title}</h3>
         <div class="categories">
-            <span>​​​​​​​​​ជំពូកៈ {post.data.categories.join(', ')}</span>
+            <span>​​​​​​​​​ជំពូកៈ {categories.join(', ')}</span>
             <span>{post.data.pudate.toLocaleDateString('it-IT')}</span>
         </div>
         <div class="author">
             <span>អ្នក​​​​​​​​​​រៀបរៀងៈ {author.data.name}</span>
         </div>
-        <div class="video" data-videos={JSON.stringify(videos?.data.videos)}>
+        <div class="video" data-videos={JSON.stringify(videos.data.videos)}>
             <div class="screen"></div>
             <div class="playlist" data-title={post.data.title}></div>
         </div>
